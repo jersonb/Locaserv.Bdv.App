@@ -15,7 +15,7 @@ public partial class MainPage : ContentPage
 
     private async void OnCounterClicked(object sender, EventArgs e)
     {
-        var a = await MainPage.GetTets();
+        var a = await GetTets();
 
         count++;
 
