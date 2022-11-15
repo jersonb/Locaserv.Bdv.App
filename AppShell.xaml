@@ -3,12 +3,20 @@
     x:Class="Locaserv.Bdv.App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Locaserv.Bdv.App"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:Locaserv.Bdv.App.Pages">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <Tab Title="Principal" Icon="home.png">
+            <ShellContent Title="Principal"
+                         ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Condutores" Icon="driver.png">
+            <ShellContent Title="Condutores"
+                          ContentTemplate="{DataTemplate local:Conductors}" />
+        </Tab>
+        <Tab Title="Veículos" Icon="bus.pbg">
+            <ShellContent Title="Veículos"
+                          ContentTemplate="{DataTemplate local:Vehicles}" />
+        </Tab>
+    </TabBar>
 </Shell>

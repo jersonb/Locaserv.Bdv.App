@@ -2,7 +2,7 @@
 using Refit;
 using System.Text.Json;
 
-namespace Locaserv.Bdv.App;
+namespace Locaserv.Bdv.App.Pages;
 
 public partial class MainPage : ContentPage
 {
@@ -14,11 +14,13 @@ public partial class MainPage : ContentPage
     private async void GetComunication(object sender, EventArgs e)
     {
         Loading.IsRunning = true;
-        var testApi = RestService.For<ITest>("https://locaserv-bdv-api.herokuapp.com/");
 
-        var result = await testApi.GetTest();
+        var testApi = RestService.For<IConductor>("https://locaserv-bdv-api.herokuapp.com");
 
-        ApiComnunicationLbl.Text = JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
+        var result = await testApi.GetById(Guid.Parse("6a720c11-9f43-4bae-ab9d-ee4977912597"));
+
+        ApiComnunicationLbl2.Text = JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
+
         Loading.IsRunning = false;
 
         SemanticScreenReader.Announce(ApiComnunicationLbl.Text);
